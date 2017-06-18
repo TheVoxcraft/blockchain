@@ -16,9 +16,9 @@ class Block:
             self.prev_block=self.uniqueID
 
 class Blockchain:
-    self.loaded=False
-    self.blockchain=[]
-    self.blockchain_file_name=""
+    loaded=False
+    blockchain=[]
+    blockchain_file_name=""
 
     def __init__(self, _fo="blockchain.p"):
         self.blockchain_file_name=_fo
@@ -32,7 +32,9 @@ class Blockchain:
             print("(error) could not load blockchain...")
             self.loaded=False
 
-    def saveToFile(self, fo=self.blockchain_file_name):
+    def saveToFile(self, fo=None):
+        if fo==None:
+            fo=self.blockchain_file_name
         print("(info) saving new blockchain...")
         pickle.dump(self.blockchain, open(self.blockchain_file_name, "wb"))
         
